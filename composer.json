@@ -1,5 +1,5 @@
 {
-    "name": "gcg/gcg-database",
+    "name": "gulfcoastgreens/gcg-database",
     "description": "Description of project gcg-database.",
     "type": "library",
     "license": "Apache-2.0",
@@ -9,6 +9,8 @@
             "email": "jamjon3@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "catfan/Medoo": "^1.0",
         "caseyamcl/Configula": "^2.4"
