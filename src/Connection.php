@@ -20,7 +20,7 @@ abstract class Connection {
         }
         if(!isset($this->dbmap[$name])) {
             $this->dbmap[$name] = $this->createConnection($name);
-            $this->dbmap[$name]->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
+            $this->dbmap[$name]->pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
         }
         return $this->dbmap[$name];
     }
