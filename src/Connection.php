@@ -30,7 +30,7 @@ abstract class Connection {
             $this->dbconfig = (new \Configula\Config('/usr/local/etc/gcg/default'))->getItem('gcgDatabase', []);
         }
         if(!isset($this->dbconfig[$name])) {
-            throw new Exception("No config for named option");
+            throw new \Exception("No config for named option");
         }
         return new \medoo($this->dbconfig[$name]); // medoo does not use namespaces
     }
