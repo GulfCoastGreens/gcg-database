@@ -25,7 +25,7 @@ abstract class Connection {
         return $this->dbmap[$name];
     }
     public function createConnection($name) {
-        if(!isset($this->config)) {
+        if(!isset($this->dbconfig)) {
             //Access configuration values from default location (/usr/local/etc/gcg/default)
             $this->dbconfig = (new \Configula\Config('/usr/local/etc/gcg/default'))->getItem('gcgDatabase', []);
         }
@@ -33,5 +33,8 @@ abstract class Connection {
             throw new \Exception("No config for named option");
         }
         return new \medoo($this->dbconfig[$name]); // medoo does not use namespaces
+    }
+    public function setConfigFolder($folder) {
+        $this->dbconfig = (new \Configula\Config($folder))->getItem('gcgDatabase', []);        
     }
 }
