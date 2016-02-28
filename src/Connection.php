@@ -32,6 +32,13 @@ abstract class Connection {
         if(!isset($this->dbconfig[$name])) {
             throw new \Exception("No config for named option");
         }
+        if($this->dbconfig[$name]['database_type'] == 'mysql') {
+            return new \medoo(\array_merge($this->dbconfig[$name],[
+                "option" => [
+                    \PDO::MYSQL_ATTR_LOCAL_INFILE => true
+                ]
+            ]));
+        }
         return new \medoo($this->dbconfig[$name]); // medoo does not use namespaces
     }
     public function setConfigFolder($folder) {
