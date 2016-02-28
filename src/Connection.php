@@ -14,6 +14,7 @@ namespace GCG\Core;
 abstract class Connection {
     protected $dbmap;
     protected $dbconfig;
+    protected $attributes;
     public function getConnection($name) {
         if(!isset($this->dbmap)) {
             $this->dbmap = [];
@@ -32,16 +33,17 @@ abstract class Connection {
         if(!isset($this->dbconfig[$name])) {
             throw new \Exception("No config for named option");
         }
-        if($this->dbconfig[$name]['database_type'] == 'mysql') {
+        if(isset($this->attributes)) {
             return new \medoo(\array_merge($this->dbconfig[$name],[
-                "option" => [
-                    \PDO::MYSQL_ATTR_LOCAL_INFILE => true
-                ]
+                "option" => $this->attributes
             ]));
         }
         return new \medoo($this->dbconfig[$name]); // medoo does not use namespaces
     }
     public function setConfigFolder($folder) {
         $this->dbconfig = (new \Configula\Config($folder))->getItem('gcgDatabase', []);        
+    }
+    public function setAttributes($attributes) {
+        $this->attributes = $attributes;
     }
 }
