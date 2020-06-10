@@ -34,7 +34,7 @@ abstract class Connection {
             throw new \Exception("No config for named option");
         }
         if(isset($this->attributes)) {
-            return new \medoo(\array_merge($this->dbconfig[$name],[
+            return new \Medoo(\array_merge($this->dbconfig[$name],[
                 "option" => $this->attributes
             ]));
         }

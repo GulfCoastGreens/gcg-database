@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "catfan/Medoo": "^1.0",
+        "catfan/medoo": "^1.7",
         "caseyamcl/Configula": "^2.4"
     },
     "require-dev": {
