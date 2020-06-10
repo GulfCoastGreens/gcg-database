@@ -38,7 +38,7 @@ abstract class Connection {
                 "option" => $this->attributes
             ]));
         }
-        return new \medoo($this->dbconfig[$name]); // medoo does not use namespaces
+        return new \Medoo($this->dbconfig[$name]); // medoo does not use namespaces
     }
     public function setConfigFolder($folder) {
         $this->dbconfig = (new \Configula\Config($folder))->getItem('gcgDatabase', []);        
